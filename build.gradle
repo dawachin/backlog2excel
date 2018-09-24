@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+apply plugin: 'application'
+
+group 'backlog2excel'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+mainClassName = 'Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "com.nulab-inc:backlog4j:2.3.0"
+    compile group: 'org.apache.poi', name : 'poi', version: '3.13'
+    compile(group: 'org.apache.poi', name : 'poi-ooxml', version: '3.13') {
+        exclude group: 'stax', module: 'stax-api'
+    }
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.0.0-M4"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.0.0-M4"
+}
